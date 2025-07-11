@@ -1,0 +1,11 @@
+*
+
+!.gitattributes
+!.gitignore
+!README.md
+
+!gleam.toml
+!manifest.toml
+
+!src/
+!src/**/*
