@@ -4,9 +4,9 @@
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/github/last-commit/ethanthoma/glum/main?style=for-the-badge&labelColor=%231f1d2e&color=%23c4a7e7">
     <a href="https://hex.pm/packages/glum"><img src="https://img.shields.io/hexpm/v/glum?style=for-the-badge&labelColor=%231f1d2e&color=%239ccfd8"></a>
-    <a href="https://hexdocs.pm/glum"><img src="https://img.shields.io/badge/hex-docs?style=for-the-badge&labelColor=%231f1d2e&color=%23ebbcba"></a>
+    <a href="https://hexdocs.pm/glum"><img src="https://img.shields.io/badge/hex-docs-ffaff3?style=for-the-badge&labelColor=%231f1d2e&color=%23ebbcba"></a>
+    <img src="https://img.shields.io/github/last-commit/ethanthoma/glum/main?style=for-the-badge&labelColor=%231f1d2e&color=%23c4a7e7">
 </p>
 
 ## About
