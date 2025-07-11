@@ -47,11 +47,15 @@ pub fn button(on_tap msg: msg) -> Element(msg) {
 
 // ** ELEMENT COMBINERS **
 
+pub fn child(element element: Element(msg), children children: Element(msg)) {
+  element.Element(..element, children: element.One(children))
+}
+
 pub fn has(
   element element: Element(msg),
   children children: fn() -> Element(msg),
 ) {
-  element.Element(..element, children: element.One(children()))
+  child(element:, children: children())
 }
 
 pub fn wrap(element children: fn() -> Element(msg)) {

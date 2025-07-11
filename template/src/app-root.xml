@@ -1,0 +1,6 @@
+<Page xmlns:canvas="@nativescript/canvas" actionBarHidden="true">
+    <RootLayout>
+        <canvas:Canvas id="canvas" width="100%" height="100%" ready="canvasReady"/>
+        <AbsoluteLayout id="ui" width="100%" height="100%"/>
+    </RootLayout>
+</Page>

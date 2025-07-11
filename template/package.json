@@ -1,0 +1,22 @@
+{
+  "name": "",
+  "main": "build/dev/javascript/app/init.js",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@nativescript/canvas": "2.0.0-rc.10",
+    "@nativescript/canvas-polyfill": "2.0.0-rc.10",
+    "@nativescript/canvas-three": "2.0.0-rc.10",
+    "@nativescript/core": "~8.9.0",
+    "@nativescript/firebase-auth": "^3.3.2",
+    "@nativescript/firebase-core": "^3.3.2",
+    "@nativescript/google-signin": "^2.1.1",
+    "@nativescript/theme": "^3.1.0",
+    "three": "^0.174.0"
+  },
+  "devDependencies": {
+    "@nativescript/android": "8.9.1",
+    "@nativescript/preview-cli": "1.0.14",
+    "@nativescript/webpack": "~5.0.0"
+  }
+}

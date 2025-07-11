@@ -9,3 +9,6 @@
 
 !src/
 !src/**/*
+
+!template/
+!template/**/*
