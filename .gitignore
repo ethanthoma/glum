@@ -3,6 +3,7 @@
 !.gitattributes
 !.gitignore
 !README.md
+!LICENSE
 
 !gleam.toml
 !manifest.toml
