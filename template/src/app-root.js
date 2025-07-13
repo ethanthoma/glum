@@ -1,5 +1,5 @@
 // NativeScript init
-import { init } from "../ns/ns.ffi.mjs";
+import { init } from "../glum/glum.ffi.mjs";
 
 // Gleam entry point
 import { main } from "./app.mjs";
