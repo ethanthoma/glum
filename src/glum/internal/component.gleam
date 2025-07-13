@@ -10,6 +10,7 @@ pub type Scheme {
     font_size: Int,
     color: Color,
     content: String,
+    line_height: Float,
   )
   Rect(id: String, position: Vector(Two), size: Vector(Two), color: Color)
 }
@@ -48,3 +49,18 @@ pub fn get_size(component component: Component) -> #(Int, Int)
 
 @external(javascript, "./component.ffi.mjs", "canvasSize")
 pub fn canvas_size() -> #(Int, Int)
+
+@external(javascript, "./component.ffi.mjs", "measure")
+fn measure_text(
+  content content: String,
+  font_size font_size: Int,
+  line_height line_height: Float,
+) -> #(Float, Float)
+
+pub fn measure(scheme scheme: Scheme) -> #(Float, Float) {
+  case scheme {
+    Text(content:, font_size:, line_height:, ..) ->
+      measure_text(content:, font_size:, line_height:)
+    Rect(size:, ..) -> #(vec.x(size), vec.y(size))
+  }
+}

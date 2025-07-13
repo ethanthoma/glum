@@ -16,6 +16,8 @@ import glum/internal/util
 import glum/style.{type Colorable}
 import glum/vec
 
+const line_height = 1.2
+
 pub type Bounds {
   Bounds(x: Float, y: Float, width: Float, height: Float)
 }
@@ -164,6 +166,7 @@ fn create_scheme(
         font_size:,
         color:,
         content:,
+        line_height:,
       )
       |> option.Some
     }

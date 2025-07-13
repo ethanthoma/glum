@@ -65,20 +65,14 @@ export function checksum(type) {
 	}
 }
 
+const RENDER_SCALE = 3;
 function createText(object) {
-	const { id, position, font_size, color, content } = object;
+	const { id, position, font_size, color, content, line_height } = object;
 	const fontSize = font_size;
-
-	const lineHeight = 1.2;
-	const renderScale = 3;
+	const lineHeight = line_height;
 
 	// bitmap + ctx
-	const { textWidth, textHeight } = measure(
-		content,
-		fontSize,
-		lineHeight,
-		renderScale,
-	);
+	const { textWidth, textHeight } = measure(content, fontSize, lineHeight);
 
 	const bitmap = new Canvas();
 
@@ -90,12 +84,12 @@ function createText(object) {
 	context.scale(1, -1);
 
 	// draw text
-	context.font = `${fontSize * renderScale}px sans-serif`;
+	context.font = `${fontSize * RENDER_SCALE}px sans-serif`;
 	context.fillStyle = $color.to_css_rgba_string(color);
 	context.textBaseline = "top";
 	content.split("\n").forEach((line, index) => {
 		const x = 0;
-		const y = index * fontSize * renderScale * lineHeight;
+		const y = index * fontSize * RENDER_SCALE * lineHeight;
 
 		context.fillText(line, x, y, textWidth);
 	});
@@ -113,7 +107,11 @@ function createText(object) {
 	});
 
 	const sprite = new THREE.Sprite(material);
-	sprite.scale.set(bitmap.width / renderScale, bitmap.height / renderScale, 1);
+	sprite.scale.set(
+		bitmap.width / RENDER_SCALE,
+		bitmap.height / RENDER_SCALE,
+		1,
+	);
 	sprite.center.set(0, 1);
 
 	const pixelX = position.buffer.at(0);
@@ -138,15 +136,15 @@ function createText(object) {
 }
 
 const measureContext = new Canvas().getContext("2d");
-function measure(content, fontSize, lineHeight, renderScale) {
-	measureContext.font = `${fontSize * renderScale}px sans-serif`;
+export function measure(content, fontSize, lineHeight) {
+	measureContext.font = `${fontSize * RENDER_SCALE}px sans-serif`;
 	measureContext.textBaseline = "top";
 
 	const lines = content.split("\n");
 	const textWidth = Math.max(
 		...lines.map((line) => measureContext.measureText(line).width),
 	);
-	const textHeight = fontSize * renderScale * lines.length * lineHeight;
+	const textHeight = fontSize * RENDER_SCALE * lines.length * lineHeight;
 
 	return { textWidth, textHeight };
 }
