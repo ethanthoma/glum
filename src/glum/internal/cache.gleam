@@ -22,7 +22,7 @@ pub fn get_or_set(
 ) -> value {
   let value = get(cache:, key:)
 
-  use <- given.none(value, function.identity)
+  use <- given.none(value, else_return: function.identity)
 
   use value <- function.tap(or())
 
