@@ -22,7 +22,9 @@ pub fn render_game(object object: Object) -> Nil {
   use <- util.apply_with(fn(checksums) {
     use checksum, game_object <- dict.each(cache.all(cache:))
 
-    use <- given.that(set.contains(in: checksums, this: checksum), fn() { Nil })
+    use <- given.that(set.contains(in: checksums, this: checksum), return: fn() {
+      Nil
+    })
 
     cache.unset(cache:, key: checksum)
     game_object.remove(game_object:)
@@ -32,11 +34,11 @@ pub fn render_game(object object: Object) -> Nil {
   let checksums = set.new() |> set.insert(this: checksum)
 
   // TODO: we can update position + rotation, no need to delete
-  use <- given.that(cache.has(cache:, key: checksum), fn() { checksums })
+  use <- given.that(cache.has(cache:, key: checksum), return: fn() { checksums })
 
   let game_object = game_object.create(object:)
 
-  use game_object <- given.some(game_object, fn() { checksums })
+  use game_object <- given.some(in: game_object, else_return: fn() { checksums })
 
   cache.set(cache:, key: checksum, value: game_object)
   game_object.add(game_object:)
@@ -60,7 +62,9 @@ pub fn render_ui(element element: Element(msg)) -> Nil {
   use <- util.apply_with(fn(checksums) {
     use checksum, component <- dict.each(cache.all(cache:))
 
-    use <- given.that(set.contains(in: checksums, this: checksum), fn() { Nil })
+    use <- given.that(set.contains(in: checksums, this: checksum), return: fn() {
+      Nil
+    })
 
     cache.unset(cache:, key: checksum)
     component.remove(component:)
@@ -84,7 +88,7 @@ fn handle_emitters(emitters emitters: List(Emitter(Gesture, msg))) -> Nil {
   use <- util.apply_with(fn(ids) {
     use id, emitter <- dict.each(cache.all(cache:))
 
-    use <- given.that(set.contains(in: ids, this: id), fn() { Nil })
+    use <- given.that(set.contains(in: ids, this: id), return: fn() { Nil })
 
     cache.unset(cache:, key: id)
     emitter.unregister(emitter.Gesture(emitter))
